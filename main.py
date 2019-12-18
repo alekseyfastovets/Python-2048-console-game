@@ -130,7 +130,12 @@ def nextStep(arr):
         game = 'Game Over'
         return arr, game
 
-    
+def scors(arr):
+    scors = 0
+    for i in arr:
+        for k in i:
+            scors = scors + k
+    return int(scors)  
     
 
 if __name__ == '__main__':
@@ -141,6 +146,7 @@ if __name__ == '__main__':
         print(i)    
         
     while True:
+        print("Количество очков:", scors(field), sep=' ', end=' ')
         step = input('Ход: ')
         os.system('cls')
         #os.system(['clear', 'cls'][os.name == os.sys.platform])
