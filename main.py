@@ -2,13 +2,40 @@ import random
 import os
 
 
-field = [[2,0,0,0],
-         [0,0,0,2],
-         [2,0,0,2],
-         [0,0,0,0]]
 
-for i in field:               
-    print(i)
+def choseItem(filedLen):
+
+	if int(filedLen) and filedLen < 10 and filedLen >= 2:
+		filedLen = int(filedLen)
+	else:
+		filedLen = 2
+
+	stats = []
+	startItems = [2,2,2,2,2,2,2,2,2,4]
+
+	for i in range(0,filedLen):
+		stats.append([random.randint(0,filedLen-1),
+					  random.randint(0,filedLen-1),
+					  startItems[random.randint(0,9)]])
+
+	return stats
+
+
+def initField(filedLen):
+	field = []
+	for i in range(0,filedLen):
+		elem = []
+		for k in range(0,filedLen):
+			elem.append(0)
+		field.append(elem)
+	
+	stats = choseItem(filedLen)
+
+	for val in stats:
+		field[val[0]][val[1]] = val[2]
+
+	return field
+
 
 
 
@@ -107,7 +134,12 @@ def nextStep(arr):
     
     
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
+
+    field = initField(4)
+
+    for i in field:
+        print(i)    
         
     while True:
         step = input('Ход: ')
