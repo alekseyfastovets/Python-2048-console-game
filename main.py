@@ -140,6 +140,7 @@ def scors(arr):
 
 
 def firstOpen(fileForFile):
+    os.system('cls')
     with open(fileForFile,'r') as file:
         for line in file:
             print(line, end = '\n')
