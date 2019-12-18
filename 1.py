@@ -1,4 +1,5 @@
 import random
+import os
 
 
 field = [[2,0,0,0],
@@ -110,17 +111,19 @@ if __name__ == '__main__':
         
     while True:
         step = input('Ход: ')
+        os.system('cls')
+        #os.system(['clear', 'cls'][os.name == os.sys.platform])
         if step == 'w':
             for i in vertical(field, 'up'):               
                 print(i)
         elif step == 's':
-            for i in vertical(field, 'down'):               
+            for i in vertical(field, 'down'):              
                 print(i)
         elif step == 'a':
-            for i in horizontal(field,'left'):               
+            for i in horizontal(field,'left'):              
                 print(i)
         elif step == 'd':
-            for i in horizontal(field,'right'):               
+            for i in horizontal(field,'right'):            
                 print(i)
         else:
             break
