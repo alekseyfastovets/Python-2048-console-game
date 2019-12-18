@@ -5,11 +5,6 @@ import os
 
 def choseItem(filedLen):
 
-	if int(filedLen) and filedLen < 10 and filedLen >= 2:
-		filedLen = int(filedLen)
-	else:
-		filedLen = 2
-
 	stats = []
 	startItems = [2,2,2,2,2,2,2,2,2,4]
 
@@ -22,19 +17,23 @@ def choseItem(filedLen):
 
 
 def initField(filedLen):
-	field = []
-	for i in range(0,filedLen):
-		elem = []
-		for k in range(0,filedLen):
-			elem.append(0)
-		field.append(elem)
+    if filedLen > 10 or filedLen <=2:
+        print('Размер поля не должен быть больше 10 и меньше 2\nЭто очевидно! В наказание, будет тебе маленькое поле, играй так.')
+        filedLen = 2
+    field = []
+   
+    for i in range(0,filedLen):
+        elem = []
+        for k in range(0,filedLen):
+            elem.append(0)
+        field.append(elem)
 	
-	stats = choseItem(filedLen)
+    stats = choseItem(filedLen)
 
-	for val in stats:
-		field[val[0]][val[1]] = val[2]
+    for val in stats:
+        field[val[0]][val[1]] = val[2]
 
-	return field
+    return field
 
 
 
@@ -136,7 +135,7 @@ def nextStep(arr):
 
 if __name__ == '__main__':
 
-    field = initField(4)
+    field = initField(int(input('Размер поля: ')))
 
     for i in field:
         print(i)    
