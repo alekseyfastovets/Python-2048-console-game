@@ -3,20 +3,6 @@ import os
 import time
 
 
-
-def choseItem(filedLen):
-
-	stats = []
-	startItems = [2,2,2,2,2,2,2,2,2,4]
-
-	for i in range(0,filedLen):
-		stats.append([random.randint(0,filedLen-1),
-					  random.randint(0,filedLen-1),
-					  startItems[random.randint(0,9)]])
-
-	return stats
-
-
 def initField(filedLen):
     if filedLen > 10 or filedLen <=2:
         print('Размер поля не должен быть больше 10 и меньше 2\nЭто очевидно! В наказание, будет тебе маленькое поле, играй так.')
@@ -28,6 +14,16 @@ def initField(filedLen):
         for k in range(0,filedLen):
             elem.append(0)
         field.append(elem)
+
+    def choseItem(filedLen):
+        stats = []
+        startItems = [2,2,2,2,2,2,2,2,2,4]
+
+        for i in range(0,filedLen):
+            stats.append([random.randint(0,filedLen-1),
+                        random.randint(0,filedLen-1),
+                        startItems[random.randint(0,9)]])
+        return stats
 	
     stats = choseItem(filedLen)
 
@@ -71,7 +67,7 @@ def vertical(arr, direction):
         for key, value in enumerate(preArr):
             arr[key][i] = value
             
-    arr, cont = nextStep(arr)
+    arr, cont, state = nextStep(arr)
     print(cont)    
     return arr
 
@@ -104,7 +100,7 @@ def horizontal(arr,direction):
             
         arr[i] = elem
     
-    arr, cont = nextStep(arr)
+    arr, cont, state = nextStep(arr)
     print(cont)  
     return arr
  
@@ -126,10 +122,12 @@ def nextStep(arr):
         coordY = int(index[2])
         arr[coordX][coordY] = 2
         game = 'Game Must Go On'
-        return arr, game
+        state = True
+        return arr, game, state
     else:
         game = 'Game Over'
-        return arr, game
+        state = False
+        return arr, game, state
 
 def scors(arr):
     scors = 0
