@@ -1,5 +1,6 @@
 import random
 import os
+import time
 
 
 
@@ -136,9 +137,19 @@ def scors(arr):
         for k in i:
             scors = scors + k
     return int(scors)  
+
+
+def firstOpen(fileForFile):
+    with open(fileForFile,'r') as file:
+        for line in file:
+            print(line, end = '\n')
+        time.sleep(3)
+        os.system('cls')
     
 
 if __name__ == '__main__':
+
+    firstOpen(r'res/load.txt')
 
     field = initField(int(input('Размер поля: ')))
 
