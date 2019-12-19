@@ -5,7 +5,7 @@ import time
 
 def initField(filedLen):
     if filedLen > 10 or filedLen <=2:
-        print('Размер поля не должен быть больше 10 и меньше 2\nЭто очевидно! В наказание, будет тебе маленькое поле, играй так.')
+        print(r'Размер поля не должен быть больше 10 и меньше 2\nЭто очевидно! В наказание, будет тебе маленькое поле, играй так.')
         filedLen = 2
     field = []
    
@@ -138,12 +138,14 @@ def scors(arr):
 
 
 def firstOpen(fileForFile):
-    os.system('cls')
+    os.system(['clear', 'cls'][os.name == os.sys.platform])
+
     with open(fileForFile,'r') as file:
         for line in file:
             print(line, end = '\n')
         time.sleep(3)
-        os.system('cls')
+        os.system(['clear', 'cls'][os.name == os.sys.platform])
+
     
 
 if __name__ == '__main__':
@@ -158,8 +160,7 @@ if __name__ == '__main__':
     while True:
         print("Количество очков:", scors(field), sep=' ', end=' ')
         step = input('Ход: ')
-        os.system('cls')
-        #os.system(['clear', 'cls'][os.name == os.sys.platform])
+        os.system(['clear', 'cls'][os.name == os.sys.platform])
         if step == 'w':
             for i in vertical(field, 'up'):               
                 print(i)
